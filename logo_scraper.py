@@ -77,3 +77,96 @@ class EigenUrlAfbeeldingScraper:
             ''', (url, src, pad, alt, titel, grootte, f"{w}x{h}", 'gedownload'))
         conn.commit()
         conn.close()
+        
+    def verwerk_url(self, url, alleen_logos=True):
+        """Verwerkt een URL en retourneert resultaten in een gestructureerd formaat"""
+        resultaten = []
+        kandidaten = self.vind_logo_afbeeldingen(url)
+        
+        for score, src, alt, titel in kandidaten:
+            try:
+                pad, (w, h), grootte = self.download(src, url)
+                
+                # Sla op in database
+                conn = sqlite3.connect(self.database_pad)
+                cursor = conn.cursor()
+                cursor.execute('''
+                    INSERT INTO afbeeldingen
+                    (bron_url, afbeelding_url, lokaal_bestand, alt, titel, grootte, afmeting, status)
+                    VALUES (?,?,?,?,?,?,?,?)
+                ''', (url, src, pad, alt, titel, grootte, f"{w}x{h}", 'gedownload'))
+                conn.commit()
+                conn.close()
+                
+                resultaten.append({
+                    'succes': True,
+                    'url': src,
+                    'bestand': pad,
+                    'afmeting': f"{w}x{h}",
+                    'grootte': grootte,
+                    'alt': alt,
+                    'titel': titel
+                })
+            except Exception as e:
+                resultaten.append({
+                    'succes': False,
+                    'url': src,
+                    'fout': str(e)
+                })
+        
+        return resultaten
+
+    def exporteer_naar_html_overzicht(self):
+        """Exporteert alle verzamelde afbeeldingen naar een HTML overzicht"""
+        conn = sqlite3.connect(self.database_pad)
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM afbeeldingen ORDER BY datum DESC')
+        afbeeldingen = cursor.fetchall()
+        conn.close()
+        
+        html = """
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Afbeeldingen Overzicht</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 20px; }
+                .container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+                .item { border: 1px solid #ddd; padding: 15px; border-radius: 5px; }
+                .item img { max-width: 100%; height: auto; }
+                .info { margin-top: 10px; font-size: 0.9em; }
+            </style>
+        </head>
+        <body>
+            <h1>Verzamelde Afbeeldingen</h1>
+            <p>Gegenereerd op: """ + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + """</p>
+            <div class="container">
+        """
+        
+        for afbeelding in afbeeldingen:
+            id, bron_url, afbeelding_url, lokaal_bestand, alt, titel, grootte, afmeting, status, datum = afbeelding
+            html += f"""
+            <div class="item">
+                <img src="{lokaal_bestand}" alt="{alt}">
+                <div class="info">
+                    <p><strong>Bron:</strong> <a href="{bron_url}" target="_blank">{bron_url[:30]}...</a></p>
+                    <p><strong>Alt:</strong> {alt}</p>
+                    <p><strong>Titel:</strong> {titel}</p>
+                    <p><strong>Afmeting:</strong> {afmeting}</p>
+                    <p><strong>Grootte:</strong> {grootte} bytes</p>
+                    <p><strong>Bestand:</strong> {lokaal_bestand}</p>
+                </div>
+            </div>
+            """
+        
+        html += """
+            </div>
+        </body>
+        </html>
+        """
+        
+        with open("afbeeldingen_overzicht.html", "w", encoding="utf-8") as f:
+            f.write(html)
+        
+        return "afbeeldingen_overzicht.html"

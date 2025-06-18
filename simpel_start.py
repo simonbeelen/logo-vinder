@@ -1,4 +1,4 @@
-from eigen_url_scraper import EigenUrlAfbeeldingScraper
+from logo_scraper import EigenUrlAfbeeldingScraper
 
 def simpel_gebruik():
     scraper = EigenUrlAfbeeldingScraper()
@@ -9,14 +9,11 @@ def simpel_gebruik():
     print("Starten met afbeeldingen scrapen...")
     for url in mijn_urls:
         print(f"\nVerwerken: {url}")
-        resultaten = scraper.verwerk_url(url, alleen_logos=True)
-        for resultaat in resultaten:
-            if resultaat['succes']:
-                print(f"  ✓ Gedownload: {resultaat['bestand']}")
-            else:
-                print(f"  ✗ Fout: {resultaat['url']}")
-    scraper.exporteer_naar_html_overzicht()
-    print("\nKlaar! Check 'afbeeldingen_overzicht.html' voor resultaten.")
+        # Using the existing 'verwerk' method instead of 'verwerk_url'
+        scraper.verwerk("", url)
+        print(f"  ✓ Afbeeldingen opgeslagen in 'logos' map")
+    
+    print("\nKlaar! Check de 'logos' map en 'eigen_afbeeldingen.db' voor resultaten.")
 
 if __name__ == "__main__":
     simpel_gebruik()

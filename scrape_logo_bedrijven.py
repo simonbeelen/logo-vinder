@@ -1,4 +1,5 @@
 from logo_scraper import EigenUrlAfbeeldingScraper
+import time
 
 bedrijven = [
     ('Accenture','https://www.accenture.com/be-en'),
@@ -56,8 +57,38 @@ bedrijven = [
 ]
 
 scraper = EigenUrlAfbeeldingScraper()
+resultaten = {"succes": [], "mislukt": []}
 
-for naam, url in bedrijven:
-    scraper.verwerk(naam, url)
+print(f"Start verwerking van {len(bedrijven)} bedrijven...")
+for index, (naam, url) in enumerate(bedrijven):
+    try:
+        print(f"[{index+1}/{len(bedrijven)}] Verwerken: {naam} ({url})")
+        scraper.verwerk(naam, url)
+        resultaten["succes"].append(naam)
+        print(f"  ✓ Succesvol verwerkt")
+        # Kleine pauze tussen requests om overbelasting van servers te voorkomen
+        time.sleep(1)
+    except Exception as e:
+        print(f"  ✗ Fout bij verwerken van {naam}: {str(e)}")
+        resultaten["mislukt"].append((naam, url, str(e)))
+        # Doorgaan met volgende bedrijf
+        continue
 
-print("Klaar, check map 'logos' en database 'eigen_afbeeldingen.db'")
+# Samenvatting tonen
+print("\n--- RESULTATEN SAMENVATTING ---")
+print(f"Totaal bedrijven: {len(bedrijven)}")
+print(f"Succesvol verwerkt: {len(resultaten['succes'])}")
+print(f"Mislukt: {len(resultaten['mislukt'])}")
+
+if resultaten["mislukt"]:
+    print("\nMislukte bedrijven:")
+    for naam, url, fout in resultaten["mislukt"]:
+        print(f"- {naam}: {fout}")
+    
+    # Optioneel: sla mislukte bedrijven op in een bestand voor later
+    with open("mislukte_bedrijven.txt", "w") as f:
+        for naam, url, fout in resultaten["mislukt"]:
+            f.write(f"{naam},{url},{fout}\n")
+    print("\nMislukte bedrijven opgeslagen in 'mislukte_bedrijven.txt'")
+
+print("\nKlaar! Check map 'logos' en database 'eigen_afbeeldingen.db' voor resultaten.")
