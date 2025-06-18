@@ -58,6 +58,10 @@ bedrijven = [
 scraper = EigenUrlAfbeeldingScraper()
 
 for naam, url in bedrijven:
-    scraper.verwerk(naam, url)
+    kandidaten = scraper.vind_logo_afbeeldingen(url)
+    if not kandidaten:
+        continue
+    scraper.verwerk_url(url, alleen_logos=True)
 
-print("Klaar, check map 'logos' en database 'eigen_afbeeldingen.db'")
+scraper.exporteer_naar_html_overzicht()
+scraper.exporteer_naar_sql()
