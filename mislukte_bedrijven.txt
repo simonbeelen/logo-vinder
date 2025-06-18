@@ -1,0 +1,18 @@
+ARHS Group,https://www.arhs-group.com/about-us/,cannot identify image file <_io.BytesIO object at 0x000001B9261170B0>
+Avelon,https://www.avelon.be/,cannot identify image file <_io.BytesIO object at 0x000001B923D91F80>
+Axxes,https://www.axxes.com/,cannot identify image file <_io.BytesIO object at 0x000001B923D91030>
+Bulls-i,https://www.bulls-i.company/,cannot identify image file <_io.BytesIO object at 0x000001B92605A8E0>
+BuSI,https://www.busi.eu,('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+Colruyt Group,https://jobs.colruytgroup.com,cannot identify image file <_io.BytesIO object at 0x000001B926802A20>
+Cookie Crunchers,https://www.cookiecrunchers.be/,cannot identify image file <_io.BytesIO object at 0x000001B92630EA70>
+delaware BeLux,https://www.delaware.pro/nl-be/careers/junior,cannot identify image file <_io.BytesIO object at 0x000001B92630EC50>
+Eezee-IT,https://eezee-it.com,unknown file extension: 
+EQUANS,https://jobs.equans.be/nl/,cannot identify image file <_io.BytesIO object at 0x000001B923CBAE80>
+Fabulor,https://www.fabulor.eu,cannot identify image file <_io.BytesIO object at 0x000001B923E47E20>
+Gumption,https://www.gumption.eu,No connection adapters were found for 'data:image/jpeg;base64,%2F9j%2F4AAQSkZJRgABAQEAYABgAAD%2F%2FgA7Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBxdWFsaXR5ID0gNTAK%2F9sAQwAQCwwODAoQDg0OEhEQExgoGhgWFhgxIyUdKDozPTw5Mzg3QEhcTkBEV0U3OFBtUVdfYmdoZz5NcXlwZHhcZWdj%2F9sAQwEREhIYFRgvGhovY0I4QmNjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2Nj%2F8AAEQgAFAAQAwEiAAIRAQMRAf%2FEAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC%2F%2FEALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29%2Fj5%2Bv%2FEAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC%2F%2FEALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5%2Bjp6vLz9PX29%2Fj5%2Bv%2FaAAwDAQACEQMRAD8A7%2BvL5tX1R%2FE%2B%2FwC1TorXHyJvIULnpjpjFdLdeKZZUK28QjB%2FiJyazrS2Op3kRjh3OrcuBwtbwpN6vY0cVBPm3M%2Fw5AupapFBcs5Qgk4OM4r0mCCK2iWKCNY0XoqiiinXeyIluf%2FZ'
+ICT Talents,https://www.houseoftalents.be/nl/ict-talents,cannot identify image file <_io.BytesIO object at 0x000001B926ADC040>
+Launch.Career,https://launch.career/,cannot identify image file <_io.BytesIO object at 0x000001B92642C040>
+Nomios,https://www.nomios.be/,cannot identify image file <_io.BytesIO object at 0x000001B92685D4E0>
+Ordina,https://www.ordina.be/,HTTPSConnectionPool(host='www.ordina.be', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1007)')))
+Smals,https://www.smals.be/nl/jobs,No connection adapters were found for "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%201%201'%2F%3E"
+UZ Brussel,https://www.uzbrusselict.be,cannot identify image file <_io.BytesIO object at 0x000001B92642D580>
